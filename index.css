@@ -14,6 +14,22 @@ body{
               linear-gradient(180deg,var(--bg1),var(--bg2));
   color:#fff;overflow:hidden;
 }
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: url('path/to/bg.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter: blur(10px) brightness(.45);
+  transform: scale(1.04);
+  z-index:0;
+  pointer-events:none;
+}
+.scene{position:relative;z-index:1}
+
 .scene{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:stretch}
 .top{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:linear-gradient(180deg,rgba(0,0,0,0.15),transparent);z-index:5}
 .top .logo{font-size:20px;color:var(--iron-red)}
