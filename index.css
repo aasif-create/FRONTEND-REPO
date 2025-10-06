@@ -23,7 +23,7 @@ body::before{
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  filter: blur(10px) brightness(.45);
+  filter: blur(4px) brightness(.55);
   transform: scale(1.04);
   z-index:0;
   pointer-events:none;
