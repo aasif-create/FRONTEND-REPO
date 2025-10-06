@@ -19,7 +19,7 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  background-image: url('path/to/bg.jpg');
+  background-image: url('images/IRONMAN\ PIC.jpg');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
