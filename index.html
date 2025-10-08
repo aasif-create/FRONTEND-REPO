@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IRON MAN — Home</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="scene">
+  <div class="stars" aria-hidden="true">
+    <span class="star" style="--i:1"></span>
+    <span class="star" style="--i:2"></span>
+    <span class="star" style="--i:3"></span>
+    <span class="star" style="--i:4"></span>
+    <span class="star" style="--i:5"></span>
+    <span class="star" style="--i:6"></span>
+    <span class="star" style="--i:7"></span>
+    <span class="star" style="--i:8"></span>
+    <span class="star" style="--i:9"></span>
+    <span class="star" style="--i:10"></span>
+    <span class="star" style="--i:11"></span>
+    <span class="star" style="--i:12"></span>
+    <span class="star" style="--i:13"></span>
+    <span class="star" style="--i:14"></span>
+    <span class="star" style="--i:15"></span>
+    <span class="star" style="--i:16"></span>
+    <span class="star" style="--i:17"></span>
+    <span class="star" style="--i:18"></span>
+    <span class="star" style="--i:19"></span>
+    <span class="star" style="--i:20"></span>
+    <span class="star" style="--i:21"></span>
+    <span class="star" style="--i:22"></span>
+    <span class="star" style="--i:23"></span>
+    <span class="star" style="--i:24"></span>
+  </div>
+
+  <header class="top">
+    <div class="logo">⚙️</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#suit">Suit</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="helmet-wrap">
+      <div class="helmet">
+        <div class="face"></div>
+        <div class="visor"></div>
+        <div class="chin"></div>
+        <div class="arc"></div>
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <a class="btn" href="#suit">Suit Up</a>
+      <a class="btn try" id="tryBtn" role="button">TRY HERE</a>
+    </div>
+  </main>
+  <footer>
+    <small>Made with CSS — fan demo • not official.</small>
+  </footer>
+</div>
+<div id="video-overlay" class="video-overlay" aria-hidden="true">
+  <video id="introVideo" playsinline webkit-playsinline preload="auto">
+    <source src="video/IRONMANCLIP.mp4" type="video/mp4">
+  </video>
+</div>
+<script>
+(function(){
+  const tryBtn = document.getElementById('tryBtn');
+  const overlay = document.getElementById('video-overlay');
+  const video = document.getElementById('introVideo');
+  const redirectTo = 'movies.html';
+  const hardRedirectTimeoutMs = 7000;
+  let hardTimeout = null;
+
+  tryBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    tryBtn.setAttribute('aria-disabled', 'true');
+    tryBtn.style.pointerEvents = 'none';
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
+    video.currentTime = 0;
+    hardTimeout = setTimeout(() => {
+      window.location.href = redirectTo;
+    }, hardRedirectTimeoutMs);
+
+    try {
+      await video.play();
+    } catch (err) {
+      console.warn('Playback failed (will still redirect):', err);
+    }
+
+    const redirectAfterMs = 5000;
+    const redirectTimer = setTimeout(() => {
+      clearTimeout(hardTimeout);
+      window.location.href = redirectTo;
+    }, redirectAfterMs);
+
+    video.addEventListener('ended', () => {
+      clearTimeout(redirectTimer);
+      clearTimeout(hardTimeout);
+      window.location.href = redirectTo;
+    }, { once: true });
+  });
+
+  overlay.addEventListener('click', (e) => {
+    e.preventDefault();
+    video.pause();
+    window.location.href = redirectTo;
+  });
+})();
+</script>
+</body>
+</html>
