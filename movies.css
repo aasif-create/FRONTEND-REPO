@@ -11,7 +11,7 @@ html,body{height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neu
 .space{position:absolute;inset:0;background:
   radial-gradient(900px 420px at 12% 18%, rgba(255,40,40,0.04), transparent 10%),
   radial-gradient(600px 300px at 88% 82%, rgba(255,90,90,0.02), transparent 12%),
-  linear-gradient(180deg,#020203,#05050a);filter:brightness(.95);z-index:0}
+  linear-gradient(180deg,#c62d07,#05050a);filter:brightness(.95);z-index:0}
 .grid3d{position:absolute;inset:0;display:grid;place-items:center;perspective:1200px;z-index:1}
 .cube{width:220px;height:220px;border-radius:12px;background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));box-shadow:inset 0 1px 0 rgba(255,255,255,0.02),0 20px 60px rgba(0,0,0,0.6);transform-style:preserve-3d;opacity:.55;animation:float 9s ease-in-out infinite}
 .c1{transform:translate3d(-30vw,-20vh, -120px) rotateX(12deg) rotateY(-22deg);animation-delay:0s}
